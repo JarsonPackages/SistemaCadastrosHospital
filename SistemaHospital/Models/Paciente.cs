@@ -18,5 +18,6 @@ namespace ProjetoC._03_MODEL
         public string UF  { get; set; }
         public string Cidade { get; set; }
         public bool isValido { get; set; }
+        public int idMedico { get; set; }
     }
 }
