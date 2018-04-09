@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="03-MODEL\**" />
+    <EmbeddedResource Remove="03-MODEL\**" />
+    <None Remove="03-MODEL\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="02-REPOSITORIO\02-MAPPER\" />
-    <Folder Include="03-MODEL\" />
   </ItemGroup>
 
 </Project>

@@ -93,6 +93,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="01-INFRA\DBSServer.cs" />
+    <Compile Include="01-INFRA\IConexao.cs" />
+    <Compile Include="02-REPOSITORIO\01-CORE\MedicoRepositorio.cs" />
+    <Compile Include="02-REPOSITORIO\01-CORE\PacienteRepositorio.cs" />
+    <Compile Include="02-REPOSITORIO\01-INFRA\DBSServer.cs" />
+    <Compile Include="02-REPOSITORIO\01-INFRA\IConexao.cs" />
+    <Compile Include="02-REPOSITORIO\IRepositorio.cs" />
+    <Compile Include="04-Dominio\IServices.cs" />
+    <Compile Include="04-Dominio\MedicoServices.cs" />
+    <Compile Include="04-Dominio\PacienteServices.cs" />
+    <Compile Include="04-Dominio\Validar\ApiCorreios.cs" />
+    <Compile Include="04-Dominio\Validar\ValidaPaciente.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -114,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -19,11 +19,9 @@ namespace ProjetoC._04_Dominio
             bool verifica = repositorio.Delete(_user);
             if (verifica)
             {
-                System.Windows.Forms.MessageBox.Show("Medico Excluido");
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Erro ao Excluir Medico");
             }
         }
 
@@ -32,7 +30,6 @@ namespace ProjetoC._04_Dominio
             var _medico = repositorio.GetById(_user);
             if (_medico == null)
             {
-                System.Windows.Forms.MessageBox.Show("Paciente nao encontrado");
 
             }
             return _medico;
@@ -44,7 +41,6 @@ namespace ProjetoC._04_Dominio
             pacientes = repositorio.GetAll();
             if (pacientes == null)
             {
-                System.Windows.Forms.MessageBox.Show("Medico nao encontrado");
             }
             return pacientes;
         }

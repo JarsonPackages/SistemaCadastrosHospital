@@ -5,23 +5,24 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace ProjetoC._01_INFRA
 {
-    class DBSServer : IConexao
+    internal class DBServer : IConexao
     {
         private SqlConnection _con;
-        public DBSServer()
+        public DBServer()
         {
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+@"C:\Users\CDS\Documents\Visual Studio 2017\Projects\ProjetoC\ProjetoC\DbAcess\DbUser.mdf"+";Integrated Security=True");
+            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Documents\Visual Studio 2017\Projects\ProjetoC\ProjetoC\DbAcess\DbUser.mdf" + ";Integrated Security=True");
         }
-        public DBSServer(string strCon)
+        public DBServer(string strCon)
         {
-            _con = new  SqlConnection(strCon);
+            _con = new SqlConnection(strCon);
         }
-        public object execultaScala(string sql)
+        public object ExecultaScala(string sql)
         {
+
             object _scala;
             try
             {
@@ -33,36 +34,38 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir:\n {0} ", msg.Message);
+
                 return -1;
             }
             finally
             {
-                if(_con.State == ConnectionState.Open)
+                if (_con.State == ConnectionState.Open)
                 {
                     _con.Close();
                 }
-               
+
             }
+
         }
+
+       
 
         public bool ExecuteQuery(string sql)
         {
-           
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, _con);
                 _con.Open();
-               
+
                 cmd.ExecuteNonQuery();
                 _con.Close();
                 return true;
-               
+
             }
             catch (Exception msg)
             {
-               
-                MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir: "+ msg.Message);
+
+
                 return false;
             }
             finally
@@ -94,8 +97,8 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir:\n {0} ", msg.Message);
-                return  null;
+
+                return null;
             }
             finally
             {
@@ -105,10 +108,11 @@ namespace ProjetoC._01_INFRA
                 }
 
             }
-           
-           
-            
         }
-      
     }
 }
+
+
+
+
+        

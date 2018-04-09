@@ -72,7 +72,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, comunique o suporte sobre o erro: " + msg.Message);
+               
                 return false;
             }
         }

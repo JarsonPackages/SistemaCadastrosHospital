@@ -33,7 +33,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir:\n {0} ", msg.Message);
+                
                 return -1;
             }
             finally
@@ -62,7 +62,7 @@ namespace ProjetoC._01_INFRA
             catch (Exception msg)
             {
                
-                MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir: "+ msg.Message);
+               
                 return false;
             }
             finally
@@ -94,7 +94,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir:\n {0} ", msg.Message);
+              
                 return  null;
             }
             finally

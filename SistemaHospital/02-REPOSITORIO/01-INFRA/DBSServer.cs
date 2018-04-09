@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace ProjetoC._01_INFRA
 {
@@ -20,7 +20,7 @@ namespace ProjetoC._01_INFRA
         {
             _con = new  SqlConnection(strCon);
         }
-        public object execultaScala(string sql)
+        public object ExecultaScala(string sql)
         {
             object _scala;
             try
@@ -33,7 +33,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir:\n {0} ", msg.Message);
+               
                 return -1;
             }
             finally
@@ -62,7 +62,7 @@ namespace ProjetoC._01_INFRA
             catch (Exception msg)
             {
                
-                MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir: "+ msg.Message);
+                
                 return false;
             }
             finally
@@ -94,7 +94,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, Contate o suporte e informe a mensagem a seguir:\n {0} ", msg.Message);
+               
                 return  null;
             }
             finally

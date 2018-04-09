@@ -16,11 +16,9 @@ namespace ProjetoC._04_Dominio
             bool verifica = repositorio.Delete(_user);
             if (verifica)
             {
-                System.Windows.Forms.MessageBox.Show("Paciente Excluido");
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Erro ao Excluir Paciente");
             }
         }
 
@@ -29,7 +27,6 @@ namespace ProjetoC._04_Dominio
             var _paciente = repositorio.GetById(_user);
             if (_paciente == null)
             {
-                System.Windows.Forms.MessageBox.Show("Paciente nao encontrado");
 
             }
             return _paciente;
@@ -41,7 +38,6 @@ namespace ProjetoC._04_Dominio
             pacientes = repositorio.GetAll();
             if (pacientes == null)
             {
-                System.Windows.Forms.MessageBox.Show("Pacientes nao encontrado");
             }
             return pacientes;
         }
@@ -58,13 +54,11 @@ namespace ProjetoC._04_Dominio
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Paciente não cadastrado");
                 }
 
             }
             catch (Exception erro)
             {
-                System.Windows.Forms.MessageBox.Show(erro.Message);
             }
         }
 
@@ -73,12 +67,10 @@ namespace ProjetoC._04_Dominio
             bool verifica = repositorio.Update(_user);
             if (verifica)
             {
-                System.Windows.Forms.MessageBox.Show("Atualizado com sucesso");
 
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Erro ao atualizar");
             }
         }
     }

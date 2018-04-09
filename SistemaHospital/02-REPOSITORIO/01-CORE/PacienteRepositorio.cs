@@ -21,7 +21,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         }
         public int QtdCad()
         {
-            object _total = BD.execultaScala("SELECT * FROM PACIENTE;");
+            object _total = BD.ExecultaScala("SELECT * FROM PACIENTE;");
             int _totalfinal = int.Parse(_total.ToString());
             return _totalfinal;
 
@@ -87,7 +87,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             }
             catch (Exception msg)
             {
-                System.Windows.Forms.MessageBox.Show("Erro, comunique o suporte sobre o erro: "+ msg.Message);
+               
                 return false;
             }
           

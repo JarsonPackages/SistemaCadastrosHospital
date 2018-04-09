@@ -11,7 +11,7 @@ namespace ProjetoC._01_INFRA
     {
         IDbConnection GetConnection(); 
         bool ExecuteQuery(string sql);
-        object execultaScala(string sql);
+        object ExecultaScala(string sql);
         DataSet Query(string sql);
     }
 }

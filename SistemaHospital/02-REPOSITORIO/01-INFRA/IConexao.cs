@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
-namespace ProjetoC._01_INFRA
+namespace SistemaHospital._02_REPOSITORIO._01_INFRA
 {
-    internal interface IConexao
+    interface IConexao
     {
-        IDbConnection GetConnection(); 
+        IDbConnection GetConnection();
         bool ExecuteQuery(string sql);
-        object execultaScala(string sql);
+        object ExecultaScala(string sql);
         DataSet Query(string sql);
     }
 }
