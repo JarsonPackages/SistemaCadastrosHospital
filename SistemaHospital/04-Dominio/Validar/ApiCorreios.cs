@@ -1,10 +1,7 @@
-﻿using ProjetoC.CorreiosCep;
+﻿
+using SistemaHospital.ApiCorreiosCep;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace ProjetoC._04_Dominio.Validar
 {
@@ -24,7 +21,7 @@ namespace ProjetoC._04_Dominio.Validar
                 }
                 catch (System.ServiceModel.FaultException)
                 {
-                    MessageBox.Show("Cep não encontrado");
+                    
                 }
 
                 return null;

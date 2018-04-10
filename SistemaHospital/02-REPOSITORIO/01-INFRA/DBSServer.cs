@@ -14,7 +14,8 @@ namespace ProjetoC._01_INFRA
         private SqlConnection _con;
         public DBSServer()
         {
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+@"C:\Users\CDS\Documents\Visual Studio 2017\Projects\ProjetoC\ProjetoC\DbAcess\DbUser.mdf"+";Integrated Security=True");
+            Console.WriteLine("Contrutor Ok, Abrindo conexao");
+            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\App_Data\BancoHospital.mdf;" + "Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
         }
         public DBSServer(string strCon)
         {
@@ -33,7 +34,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-               
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
                 return -1;
             }
             finally
@@ -61,8 +62,8 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-               
-                
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
+
                 return false;
             }
             finally
@@ -84,6 +85,8 @@ namespace ProjetoC._01_INFRA
         {
             try
             {
+               
+
                 SqlDataAdapter DA = new SqlDataAdapter(sql, _con);
                 DataSet DS = new DataSet();
                 _con.Open();
@@ -94,7 +97,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-               
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
                 return  null;
             }
             finally

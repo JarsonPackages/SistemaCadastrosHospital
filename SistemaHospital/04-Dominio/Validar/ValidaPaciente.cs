@@ -13,30 +13,30 @@ namespace ProjetoC._04_Dominio.Validar
         
         public static bool Validar(Paciente _paciente)
         {
-            _paciente.isValido = false;
+           
             if (!String.IsNullOrEmpty(_paciente.Cpf) && _paciente.Cpf.Length == 14)
             {
                 if (!String.IsNullOrEmpty(_paciente.Email) && Email(_paciente.Email))
                 {
                     if(!String.IsNullOrEmpty(_paciente.Cep) && !String.IsNullOrEmpty(_paciente.Nome))
                     {
-                        _paciente.isValido = true;
-                        return _paciente.isValido;
+
+                        return true;
                     }
 
-                    return _paciente.isValido;
+                    return false;
                 }
                 else
                 {
 
-                    System.Windows.Forms.MessageBox.Show("Email ínvalido ");
-                    return _paciente.isValido;
+
+                    return false;
                 }
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Cpf Invalido");
-                return _paciente.isValido;
+
+                return false;
             }
 
            

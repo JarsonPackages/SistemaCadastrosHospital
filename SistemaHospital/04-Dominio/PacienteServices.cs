@@ -57,8 +57,9 @@ namespace ProjetoC._04_Dominio
                 }
 
             }
-            catch (Exception erro)
+            catch (Exception msg)
             {
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
             }
         }
 

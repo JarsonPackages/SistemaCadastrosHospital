@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace ProjetoC._03_MODEL
 {
-    class Medico
+    public class Medico
     {
+        [Key]
         [Required(ErrorMessage ="Digite seu CRM", AllowEmptyStrings =false)]
         public int CRM { get; set; }
         [Required(ErrorMessage ="É obrigstório fornecer sua Especialização!", AllowEmptyStrings = false)]
         [DataType(DataType.Text)]
         public string Especializacao { get; set; }
+        [Required]
         public string Nome { get; set; }
        
 

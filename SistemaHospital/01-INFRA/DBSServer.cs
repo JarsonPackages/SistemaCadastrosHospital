@@ -14,7 +14,7 @@ namespace ProjetoC._01_INFRA
         private SqlConnection _con;
         public DBServer()
         {
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\DbAcess\DbUser.mdf" + ";Integrated Security=True");
+            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\App_Data\BancoHospital.mdf;" + "Integrated Security=True");
         }
         public DBServer(string strCon)
         {
@@ -34,7 +34,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
                 return -1;
             }
             finally
@@ -64,7 +64,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-
+                Console.WriteLine("Alert Alert, Erro: "+msg.Message);
 
                 return false;
             }
@@ -97,7 +97,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
                 return null;
             }
             finally

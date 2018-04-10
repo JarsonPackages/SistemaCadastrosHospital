@@ -12,10 +12,10 @@ namespace ProjetoC._03_MODEL
         [Key]
         public int Id { get; set; }
         [Required]
-        [Range(0,9999)]
+        
         public string Nome { get; set; }
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
+       [Required]
         public string Email { get; set; }
         [StringLength(11,MinimumLength =10)]
         public string Cpf { get; set; }       

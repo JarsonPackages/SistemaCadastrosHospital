@@ -16,7 +16,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
             bool _verifica;
 
-            _verifica = BD.ExecuteQuery("DELETE FROM MEDICO WHERE ID='" + _item.CRM + "'; ");
+            _verifica = BD.ExecuteQuery("DELETE FROM MEDICO WHERE ID=" + _item.CRM + "; ");
             return _verifica;
         }
 
@@ -25,7 +25,8 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public List<Medico> GetAll()
         {
             List<Medico> LP = new List<Medico>();
-            DataSet DS = BD.Query("SELECT * FROM MEDICO; ");
+            DataSet DS = BD.Query("SELECT * FROM MEDICO ORDER BY NOME,CRM; ");
+           
             foreach (DataRow DR in DS.Tables[0].Rows)
             {
                 LP.Add(new Medico()
@@ -42,7 +43,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public Medico GetById(int id)
         {
             Medico LP = new Medico();
-            DataSet DS = BD.Query("SELECT * FROM MEDICO; ");
+            DataSet DS = BD.Query("SELECT * FROM MEDICO WHERE CRM= "+id+" ");
             foreach (DataRow DR in DS.Tables[0].Rows)
             {
                 new Medico()
@@ -72,7 +73,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             }
             catch (Exception msg)
             {
-               
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
                 return false;
             }
         }
@@ -80,7 +81,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public bool Update(Medico _item)
         {
             bool _verifica;
-            string sql = "UPDATE  MEDICO SET '"+_item.Nome+"', ESPECIALIZACAO='"+_item.Especializacao+"'  WHERE ID = " + _item.CRM + "  ";
+            string sql = "UPDATE  MEDICO SET NOME='"+_item.Nome+"', ESPECIALIZACAO='"+_item.Especializacao+"'  WHERE ID = " + _item.CRM + "  ";
             _verifica = BD.ExecuteQuery(sql);
             return _verifica;
         }
