@@ -10,6 +10,7 @@ namespace ProjetoC._03_MODEL
     public class Medico
     {
         [Key]
+        public int ID { get; set; }
         [Required(ErrorMessage ="Digite seu CRM", AllowEmptyStrings =false)]
         public int CRM { get; set; }
         [Required(ErrorMessage ="É obrigstório fornecer sua Especialização!", AllowEmptyStrings = false)]

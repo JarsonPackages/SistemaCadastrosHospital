@@ -14,7 +14,7 @@ namespace ProjetoC._04_Dominio.Validar
         public static bool Validar(Paciente _paciente)
         {
            
-            if (!String.IsNullOrEmpty(_paciente.Cpf) && _paciente.Cpf.Length == 14)
+            if (!String.IsNullOrEmpty(_paciente.Cpf) && _paciente.Cpf.Length == 11)
             {
                 if (!String.IsNullOrEmpty(_paciente.Email) && Email(_paciente.Email))
                 {

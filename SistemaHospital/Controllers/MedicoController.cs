@@ -21,6 +21,7 @@ namespace SistemaHospital.Controllers
         // GET: Medico/Details/5
         public ActionResult Details(int id)
         {
+           
             return View(services.Get(id));
         }
 
@@ -81,7 +82,8 @@ namespace SistemaHospital.Controllers
         {
             try
             {
-                services.Delete(_user);
+                var med = services.Get(id);
+                services.Delete(med);
 
                 return RedirectToAction("Index");
             }

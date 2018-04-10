@@ -35,11 +35,13 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CRM }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CRM } , new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CRM }, new { @class = "btn btn-danger" })
 
-            
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+           @Html.ActionLink("Excluir","Delete", new { id = item.ID } ,  new { @class = "btn btn-danger" })
+
+
+
         </td>
     </tr>
 }

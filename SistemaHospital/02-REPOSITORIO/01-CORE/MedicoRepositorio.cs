@@ -16,7 +16,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
             bool _verifica;
 
-            _verifica = BD.ExecuteQuery("DELETE FROM MEDICO WHERE ID=" + _item.CRM + "; ");
+            _verifica = BD.ExecuteQuery("DELETE FROM MEDICO WHERE ID=" +_item.ID + "; ");
             return _verifica;
         }
 
@@ -31,6 +31,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             {
                 LP.Add(new Medico()
                 {
+                    ID= int.Parse(DR["ID"].ToString()),
                     CRM = int.Parse(DR["CRM"].ToString()),
                     Nome = DR["NOME"].ToString(),
                     Especializacao = DR["ESPECIALIZACAO"].ToString(),
@@ -43,11 +44,12 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public Medico GetById(int id)
         {
             Medico LP = new Medico();
-            DataSet DS = BD.Query("SELECT * FROM MEDICO WHERE CRM= "+id+" ");
+            DataSet DS = BD.Query("SELECT * FROM MEDICO WHERE ID= "+id+" ");
             foreach (DataRow DR in DS.Tables[0].Rows)
             {
-                new Medico()
+               LP =  new Medico()
                 {
+                    ID= int.Parse(DR["ID"].ToString()),
                     CRM = int.Parse(DR["CRM"].ToString()),
                     Nome = DR["NOME"].ToString(),
                     Especializacao = DR["ESPECIALIZACAO"].ToString(),
@@ -67,7 +69,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
             try
             {
-                string sql = "INSERT INTO MEDICO VALUES(" + _item.CRM + ",'" + _item.Nome + "','" + _item.Especializacao + "')";
+                string sql = "INSERT INTO MEDICO(CRM,NOME,ESPECIALIZACAO) VALUES(" + _item.CRM + ",'" + _item.Nome + "','" + _item.Especializacao + "')";
                 BD.ExecuteQuery(sql);
                 return true;
             }
@@ -81,7 +83,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public bool Update(Medico _item)
         {
             bool _verifica;
-            string sql = "UPDATE  MEDICO SET NOME='"+_item.Nome+"', ESPECIALIZACAO='"+_item.Especializacao+"'  WHERE ID = " + _item.CRM + "  ";
+            string sql = "UPDATE  MEDICO SET NOME='"+_item.Nome+"', ESPECIALIZACAO='"+_item.Especializacao+"'  WHERE ID = " + _item.ID + "  ";
             _verifica = BD.ExecuteQuery(sql);
             return _verifica;
         }

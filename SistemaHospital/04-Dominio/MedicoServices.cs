@@ -17,21 +17,13 @@ namespace ProjetoC._04_Dominio
         public void Delete(Medico _user)
         {
             bool verifica = repositorio.Delete(_user);
-            if (verifica)
-            {
-            }
-            else
-            {
-            }
+           
         }
 
         public Medico Get(int _user)
         {
             var _medico = repositorio.GetById(_user);
-            if (_medico == null)
-            {
-
-            }
+            
             return _medico;
         }
 
@@ -39,20 +31,18 @@ namespace ProjetoC._04_Dominio
         {
             List<Medico> pacientes = new List<Medico>();
             pacientes = repositorio.GetAll();
-            if (pacientes == null)
-            {
-            }
+           
             return pacientes;
         }
 
         public void Insert(Medico _user)
         {
-            
+            repositorio.Insert(_user);
         }
 
         public void Update(Medico _user)
         {
-            throw new NotImplementedException();
+            repositorio.Update(_user);
         }
     }
 }

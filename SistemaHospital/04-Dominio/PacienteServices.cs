@@ -48,7 +48,7 @@ namespace ProjetoC._04_Dominio
 
             try
             {
-                if (valida == true && ApiCorreios.valida == true)
+                if (valida == true )
                 {
                     repositorio.Insert(_user);
                 }
