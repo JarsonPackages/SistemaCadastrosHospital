@@ -14,7 +14,7 @@ namespace ProjetoC._01_INFRA
         private SqlConnection _con;
         public DBServer()
         {
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Documents\Visual Studio 2017\Projects\ProjetoC\ProjetoC\DbAcess\DbUser.mdf" + ";Integrated Security=True");
+            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\DbAcess\DbUser.mdf" + ";Integrated Security=True");
         }
         public DBServer(string strCon)
         {

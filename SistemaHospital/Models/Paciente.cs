@@ -13,18 +13,19 @@ namespace ProjetoC._03_MODEL
         public int Id { get; set; }
         [Required]
         [Range(0,9999)]
-        public int IdMedico { get; set; }
         public string Nome { get; set; }
         [DataType(DataType.EmailAddress)]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
         public string Email { get; set; }
         [StringLength(11,MinimumLength =10)]
-        public string Cpf { get; set; }
+        public string Cpf { get; set; }       
         [Required]
         public string Cep { get; set; }
         public string Rua { get; set; }
-        public string Bairro { get; set; }    
+        public string Bairro { get; set; }
+        [Required]
         public string UF  { get; set; }
+        [Required]
         public string Cidade { get; set; }
         
 

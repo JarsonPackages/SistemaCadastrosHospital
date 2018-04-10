@@ -9,9 +9,9 @@ namespace ProjetoC._03_MODEL
 {
     class Medico
     {
-        [Required]
+        [Required(ErrorMessage ="Digite seu CRM", AllowEmptyStrings =false)]
         public int CRM { get; set; }
-        [Required]
+        [Required(ErrorMessage ="É obrigstório fornecer sua Especialização!", AllowEmptyStrings = false)]
         [DataType(DataType.Text)]
         public string Especializacao { get; set; }
         public string Nome { get; set; }

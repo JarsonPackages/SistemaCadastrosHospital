@@ -89,6 +89,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DbAcess\DbUser.mdf" />
+    <Content Include="DbAcess\DbUser_log.ldf">
+      <DependentUpon>DbUser.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -106,7 +110,9 @@
     <Compile Include="04-Dominio\Validar\ApiCorreios.cs" />
     <Compile Include="04-Dominio\Validar\ValidaPaciente.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\MedicoController.cs" />
+    <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Medico\" />
+    <Folder Include="Views\Paciente\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
