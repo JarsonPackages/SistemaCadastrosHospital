@@ -127,8 +127,6 @@
     <Compile Include="01-INFRA\IConexao.cs" />
     <Compile Include="02-REPOSITORIO\01-CORE\MedicoRepositorio.cs" />
     <Compile Include="02-REPOSITORIO\01-CORE\PacienteRepositorio.cs" />
-    <Compile Include="02-REPOSITORIO\01-INFRA\DBSServer.cs" />
-    <Compile Include="02-REPOSITORIO\01-INFRA\IConexao.cs" />
     <Compile Include="02-REPOSITORIO\IRepositorio.cs" />
     <Compile Include="04-Dominio\IServices.cs" />
     <Compile Include="04-Dominio\MedicoServices.cs" />

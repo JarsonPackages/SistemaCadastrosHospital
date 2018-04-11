@@ -32,7 +32,7 @@ namespace SistemaHospital.Controllers
         }
 
         // POST: Medico/Create
-        [HttpPost]
+        [HttpPost]        
         public ActionResult Create(Medico _user)
         {
             try
@@ -92,5 +92,6 @@ namespace SistemaHospital.Controllers
                 return View();
             }
         }
+        
     }
 }

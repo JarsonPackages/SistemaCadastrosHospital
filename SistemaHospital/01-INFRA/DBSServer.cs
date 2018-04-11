@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace ProjetoC._01_INFRA
 {
-    internal class DBServer : IConexao
+    class DBSServer : IConexao
     {
         private SqlConnection _con;
-        public DBServer()
+        public DBSServer()
         {
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\App_Data\BancoHospital.mdf;" + "Integrated Security=True");
+            Console.WriteLine("Contrutor Ok, Abrindo conexao");
+            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + @"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\App_Data\BancoHospital.mdf;" + "Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
         }
-        public DBServer(string strCon)
+        public DBSServer(string strCon)
         {
-            _con = new SqlConnection(strCon);
+            _con = new  SqlConnection(strCon);
         }
         public object ExecultaScala(string sql)
         {
-
             object _scala;
             try
             {
@@ -39,32 +39,30 @@ namespace ProjetoC._01_INFRA
             }
             finally
             {
-                if (_con.State == ConnectionState.Open)
+                if(_con.State == ConnectionState.Open)
                 {
                     _con.Close();
                 }
-
+               
             }
-
         }
-
-       
 
         public bool ExecuteQuery(string sql)
         {
+           
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, _con);
                 _con.Open();
-
+               
                 cmd.ExecuteNonQuery();
                 _con.Close();
                 return true;
-
+               
             }
             catch (Exception msg)
             {
-                Console.WriteLine("Alert Alert, Erro: "+msg.Message);
+                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
 
                 return false;
             }
@@ -87,6 +85,8 @@ namespace ProjetoC._01_INFRA
         {
             try
             {
+               
+
                 SqlDataAdapter DA = new SqlDataAdapter(sql, _con);
                 DataSet DS = new DataSet();
                 _con.Open();
@@ -98,7 +98,7 @@ namespace ProjetoC._01_INFRA
             catch (Exception msg)
             {
                 Console.WriteLine("Alert Alert, Erro: " + msg.Message);
-                return null;
+                return  null;
             }
             finally
             {
@@ -108,11 +108,10 @@ namespace ProjetoC._01_INFRA
                 }
 
             }
+           
+           
+            
         }
+      
     }
 }
-
-
-
-
-        

@@ -14,12 +14,7 @@ namespace ProjetoC._04_Dominio
     {
         MedicoRepositorio repositorio = new MedicoRepositorio();
 
-        public void Delete(Medico _user)
-        {
-            bool verifica = repositorio.Delete(_user);
-           
-        }
-
+       
         public Medico Get(int _user)
         {
             var _medico = repositorio.GetById(_user);
@@ -34,10 +29,25 @@ namespace ProjetoC._04_Dominio
            
             return pacientes;
         }
-
+        
         public void Insert(Medico _user)
         {
-            repositorio.Insert(_user);
+            
+                
+                repositorio.Insert(_user);
+             
+           
+          
+        }
+        public void Delete(Medico _user)
+        {
+          
+            
+                repositorio.Delete(_user);
+              
+            
+            bool verifica = repositorio.Delete(_user);
+
         }
 
         public void Update(Medico _user)

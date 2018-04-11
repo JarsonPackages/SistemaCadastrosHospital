@@ -11,8 +11,7 @@ namespace ProjetoC._03_MODEL
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        
+        [Required]    
         public string Nome { get; set; }
         [DataType(DataType.EmailAddress)]
        [Required]
