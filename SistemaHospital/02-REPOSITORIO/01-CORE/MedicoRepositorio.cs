@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoC._02_REPOSITORIO._01_CORE
 {
-    class MedicoRepositorio : IRepositorio<Medico>
+    class MedicoRepositorio : IRepositorio<Medico>,IDisposable
     {
         private DBSServer BD = new DBSServer();
         public bool Delete(Medico _item)
@@ -20,7 +20,10 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             return _verifica;
         }
 
-
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Medico> GetAll()
         {

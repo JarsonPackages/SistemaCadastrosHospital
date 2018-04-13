@@ -8,7 +8,7 @@ using ProjetoC._01_INFRA;
 
 namespace ProjetoC._02_REPOSITORIO._01_CORE
 {
-    class PacienteRepositorio : IRepositorio<Paciente>
+    class PacienteRepositorio : IRepositorio<Paciente>,IDisposable
     {
         DBSServer BD = new DBSServer();
         
@@ -21,7 +21,11 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             return _verifica;
 
         }
-      
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Paciente> GetAll()
         {
@@ -45,7 +49,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
                     Cpf = DR["CPF"].ToString(),
                     Rua = DR["RUA"].ToString(),
                     UF =DR["UF"].ToString(),
-                    Id_Medico = int.Parse(DR["IdMedico"].ToString())
+                    IdMedico =int.Parse(DR["IdMedico"].ToString())
 
                 });
             }
@@ -70,7 +74,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
                    Cpf = DR["CPF"].ToString(),
                    Rua = DR["RUA"].ToString(),
                    UF = DR["UF"].ToString(),
-                   Id_Medico = int.Parse(DR["IdMedico"].ToString())
+                   IdMedico = int.Parse(DR["IdMedico"].ToString())
                };
             }
             return paciente;
@@ -88,7 +92,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             
             try
             {
-                string sql = "INSERT INTO PACIENTE (NOME,EMAIL,BAIRRO,CEP,CIDADE,CPF,RUA,UF,IdMedico) VALUES('" +_item.Nome + "','" + _item.Email + "','" + _item.Bairro + "','" + _item.Cep + "','" + _item.Cidade + "','" + _item.Cpf + "','" + _item.Rua + "','" + _item.UF + "',"+_item.Id_Medico+"); ";
+                string sql = "INSERT INTO PACIENTE (NOME,EMAIL,BAIRRO,CEP,CIDADE,CPF,RUA,UF,IdMedico) VALUES('" +_item.Nome + "','" + _item.Email + "','" + _item.Bairro + "','" + _item.Cep + "','" + _item.Cidade + "','" + _item.Cpf + "','" + _item.Rua + "','" + _item.UF + "',"+_item.IdMedico+"); ";
                 BD.ExecuteQuery(sql);
                 return true;
             }
@@ -106,7 +110,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
               DBSServer BD = new DBSServer();
         bool _verifica;
-            string sql = "UPDATE  PACIENTE SET NOME ='" + _item.Nome + "', EMAIL ='" + _item.Email + "',BAIRRO = '" + _item.Bairro + "', CEP ='" + _item.Cep + "',CIDADE = '" + _item.Cidade + "', CPF = '" + _item.Cpf + "',RUA = '" + _item.Rua + "', UF = '" + _item.UF + "', IdMedico="+_item.Id_Medico+" WHERE ID = "+ _item.Id+"  ";
+            string sql = "UPDATE  PACIENTE SET NOME ='" + _item.Nome + "', EMAIL ='" + _item.Email + "',BAIRRO = '" + _item.Bairro + "', CEP ='" + _item.Cep + "',CIDADE = '" + _item.Cidade + "', CPF = '" + _item.Cpf + "',RUA = '" + _item.Rua + "', UF = '" + _item.UF + "', IdMedico="+_item.IdMedico+" WHERE ID = "+ _item.Id+"  ";
             _verifica = BD.ExecuteQuery(sql);
             return _verifica;
         }

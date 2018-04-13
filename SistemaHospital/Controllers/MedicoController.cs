@@ -32,7 +32,8 @@ namespace SistemaHospital.Controllers
         }
 
         // POST: Medico/Create
-        [HttpPost]        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Medico _user)
         {
             try
@@ -56,6 +57,7 @@ namespace SistemaHospital.Controllers
 
         // POST: Medico/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Medico _user)
         {
             try
@@ -78,6 +80,7 @@ namespace SistemaHospital.Controllers
 
         // POST: Medico/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Medico _user)
         {
             try

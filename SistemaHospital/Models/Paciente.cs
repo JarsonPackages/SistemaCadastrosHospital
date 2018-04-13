@@ -17,6 +17,7 @@ namespace ProjetoC._03_MODEL
         [DataType(DataType.EmailAddress)]
         [Required]
         public string Email { get; set; }
+        [Required]
         [StringLength(11, MinimumLength = 11)]
         public string Cpf { get; set; }
         [Required]
@@ -24,9 +25,11 @@ namespace ProjetoC._03_MODEL
         public string Cep { get; set; }
         [Required]
         [Display(Name = "Médico")]
-        public int Id_Medico { get; set; }
+        public int IdMedico { get; set; }  
         public string Rua { get; set; }
         public string Bairro { get; set; }
+        [Required]
+        [StringLength(2, MinimumLength = 2)]
         public string UF { get; set; }
         public string Cidade { get; set; }
         public List<Medico> Medicos { get; set; }

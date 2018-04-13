@@ -39,7 +39,8 @@ namespace ProjetoC._04_Dominio
 
         public bool Insert(Paciente _user)
         {
-          
+            
+      
            
             bool valida = ValidaPaciente.Validar(_user);
 

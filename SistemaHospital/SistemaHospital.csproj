@@ -101,6 +101,7 @@
     <Content Include="App_Data\AcessSql_log.ldf">
       <DependentUpon>AcessSql.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\ComandosDoBanco.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MainPage.css" />

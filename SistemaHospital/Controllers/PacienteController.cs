@@ -32,9 +32,7 @@ namespace SistemaHospital.Controllers
         // GET: Paciente/Create
         public ActionResult Create()
         {
-
-
-
+           
             Paciente paciente = new Paciente(true);
 
             return View(paciente);
@@ -49,7 +47,7 @@ namespace SistemaHospital.Controllers
         public ActionResult Create(Paciente _user)
         {
            
-            Paciente paciente = new Paciente(true);
+           
 
             if (services.Insert(_user))
             {
@@ -57,7 +55,7 @@ namespace SistemaHospital.Controllers
             }
             else
             {
-
+                Paciente paciente = new Paciente(true);
                 return View(paciente);
             }
 
