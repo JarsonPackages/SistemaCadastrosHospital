@@ -30,29 +30,28 @@ namespace ProjetoC._04_Dominio
             return pacientes;
         }
         
-        public void Insert(Medico _user)
+        public bool Insert(Medico _user)
         {
             
                 
-                repositorio.Insert(_user);
+            return     repositorio.Insert(_user);
              
            
           
         }
-        public void Delete(Medico _user)
+        public bool Delete(Medico _user)
         {
           
             
-                repositorio.Delete(_user);
+           return     repositorio.Delete(_user);
               
             
-            bool verifica = repositorio.Delete(_user);
 
         }
 
-        public void Update(Medico _user)
+        public bool Update(Medico _user)
         {
-            repositorio.Update(_user);
+           return  repositorio.Update(_user);
         }
     }
 }

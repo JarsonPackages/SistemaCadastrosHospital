@@ -11,15 +11,10 @@ namespace ProjetoC._04_Dominio
     {
         PacienteRepositorio repositorio = new PacienteRepositorio();
 
-        public void Delete(Paciente _user)
+        public bool Delete(Paciente _user)
         {
-            bool verifica = repositorio.Delete(_user);
-            if (verifica)
-            {
-            }
-            else
-            {
-            }
+            return repositorio.Delete(_user);
+
         }
 
         public Paciente Get(int _user)
@@ -42,37 +37,27 @@ namespace ProjetoC._04_Dominio
             return pacientes;
         }
 
-        public void Insert(Paciente _user)
+        public bool Insert(Paciente _user)
         {
+          
+           
             bool valida = ValidaPaciente.Validar(_user);
 
-            try
-            {
-                if (valida == true )
-                {
-                    repositorio.Insert(_user);
-                }
-                else
-                {
-                }
-
-            }
-            catch (Exception msg)
-            {
-                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
-            }
-        }
-
-        public void Update(Paciente _user)
-        {
-            bool verifica = repositorio.Update(_user);
-            if (verifica)
+            if(valida)
             {
 
+                return repositorio.Insert(_user);
             }
             else
             {
+                return false;
+                
             }
+        }
+        public bool Update(Paciente _user)
+        {
+            bool verifica = repositorio.Update(_user);
+            return verifica;
         }
     }
 }

@@ -11,14 +11,13 @@ namespace SistemaHospital.Controllers
 {
     public class PacienteController : Controller
     {
-        
-        
+
+
         PacienteServices services = new PacienteServices();
         // GET: Paciente
         public ActionResult Index()
-        {        
-                return View(services.GetAll().ToList<Paciente>());
-        
+        {
+            return View(services.GetAll().ToList<Paciente>());
         }
 
         // GET: Paciente/Details/5
@@ -26,34 +25,43 @@ namespace SistemaHospital.Controllers
         {
             return View(services.Get(id));
         }
-
-        // GET: Paciente/Create
-        public ActionResult Create()
+        public ActionResult ExCreate()
         {
             return View();
         }
+        // GET: Paciente/Create
+        public ActionResult Create()
+        {
+
+
+
+            Paciente paciente = new Paciente(true);
+
+            return View(paciente);
+        }
+
+
 
         // POST: Paciente/Create
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Paciente _user)
         {
-            try
+           
+            Paciente paciente = new Paciente(true);
+
+            if (services.Insert(_user))
             {
-                var atende = new ApiCorreiosCep.AtendeClienteClient();
-                var consulta = atende.consultaCEP(_user.Cep);
-                _user.Bairro = consulta.bairro;
-                _user.Rua = consulta.end;
-                _user.UF = consulta.uf;
-                _user.Cidade = consulta.cidade;
-
-                services.Insert(_user);
-
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return RedirectToAction("Create");
+
+                return View(paciente);
             }
+
+
         }
 
         // GET: Paciente/Edit/5
@@ -100,6 +108,7 @@ namespace SistemaHospital.Controllers
             }
         }
 
-      
+
     }
+
 }

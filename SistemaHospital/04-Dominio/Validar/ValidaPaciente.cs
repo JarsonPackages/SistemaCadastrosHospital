@@ -20,8 +20,13 @@ namespace ProjetoC._04_Dominio.Validar
                 {
                     if(!String.IsNullOrEmpty(_paciente.Cep) && !String.IsNullOrEmpty(_paciente.Nome))
                     {
+                    
+                            return true;
+                        
+                         
+                        
 
-                        return true;
+                        
                     }
 
                     return false;

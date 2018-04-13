@@ -8,10 +8,10 @@ namespace ProjetoC._04_Dominio
 {
     interface IServices<T>
     {
-        void Insert(T _user);
-        void Delete(T _user);
+        bool Insert(T _user);
+        bool Delete(T _user);
         T Get(int  _user);
         List<T> GetAll();
-        void Update(T _user);
+        bool Update(T _user);
     }
 }

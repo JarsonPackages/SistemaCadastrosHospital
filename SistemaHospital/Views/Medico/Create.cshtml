@@ -7,7 +7,6 @@
 
 <h2>Cadastrar Médico</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -52,7 +51,3 @@
       
         @Html.ActionLink("Voltar para Lista", "Index", new { }, new { @class = "btn btn-default" })
     </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
