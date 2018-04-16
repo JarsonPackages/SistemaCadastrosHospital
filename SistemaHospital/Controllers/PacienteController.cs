@@ -12,7 +12,7 @@ namespace SistemaHospital.Controllers
     public class PacienteController : Controller
     {
 
-
+        
         PacienteServices services = new PacienteServices();
         // GET: Paciente
         public ActionResult Index()
@@ -25,20 +25,24 @@ namespace SistemaHospital.Controllers
         {
             return View(services.Get(id));
         }
-        public ActionResult ExCreate()
-        {
-            return View();
-        }
+     
         // GET: Paciente/Create
         public ActionResult Create()
         {
-           
-            Paciente paciente = new Paciente(true);
+            Paciente paciente = new Paciente();
+            ViewBag.IdMedico = new SelectList(paciente.Medicos, "Id", "Nome");
 
-            return View(paciente);
+            return View();
         }
-
-
+        public PacienteController()
+        {
+            MedicoServices med = new MedicoServices();
+            Paciente paciente = new Paciente();
+            ViewBag.IdMedico = new SelectList(paciente.Medicos, "Id", "Nome");
+            ViewBag.qtdMedico =med.GetAll().Count ;
+            ViewBag.qtdPaciente = services.GetAll().Count;
+        }
+        
 
         // POST: Paciente/Create
         
@@ -55,8 +59,10 @@ namespace SistemaHospital.Controllers
             }
             else
             {
-                Paciente paciente = new Paciente(true);
-                return View(paciente);
+                Paciente paciente = new Paciente();
+                ViewBag.ClienteId = new SelectList(paciente.Medicos, "Id", "Nome");
+
+                return View();
             }
 
 
@@ -70,6 +76,7 @@ namespace SistemaHospital.Controllers
 
         // POST: Paciente/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Paciente _user)
         {
             try
@@ -92,6 +99,7 @@ namespace SistemaHospital.Controllers
 
         // POST: Paciente/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Paciente _user)
         {
             try

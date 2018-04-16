@@ -4,19 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Opções do Médico.</h2>
+
 
 <p style="color:darkred;">* Obs: Para Adicionar um paciente, Primeiro Adicione um Médico.</p>
-   
-
-
-
-
 <p>
     @Html.ActionLink("Adicionar Médico", "Create", new { }, new { @class = "btn btn-success" })
 </p>
 
-<table class="table table-hover">
+<table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CRM)
@@ -32,27 +27,38 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CRM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especializacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CRM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especializacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+       
+            <a href="@Url.Action("Details",new {id = item.ID })" class=" btn btn-xs btn-info" data-rel="tooltip" title="View">
 
-                @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }, new { @class = "btn btn-primary" }) |
-              
-                @Html.ActionLink("Excluir", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                <i class="ace-icon fa fa-search-plus bigger-120"></i>
 
+            </a>
+        
+            <a href="@Url.Action("Edit",new {id = item.ID })" class=" btn btn-xs btn-success" data-rel="tooltip" title="Edit">
 
+                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 
-            </td>
-        </tr>
+            </a>
+        
+            <a href="@Url.Action("Delete",new {id = item.ID })" class=" btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+
+                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+
+            </a>
+
+        </td>
+    </tr>
     }
 
 </table>

@@ -17,6 +17,12 @@ namespace SistemaHospital.Controllers
            
             return View(services.GetAll().ToList<Medico>());
         }
+        public MedicoController()
+        {
+            PacienteServices pac = new PacienteServices();
+            ViewBag.qtdMedico = services.GetAll().Count;
+            ViewBag.qtdPaciente = pac.GetAll().Count;
+        }
 
         // GET: Medico/Details/5
         public ActionResult Details(int id)

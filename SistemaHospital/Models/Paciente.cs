@@ -24,28 +24,27 @@ namespace ProjetoC._03_MODEL
         [StringLength(8, MinimumLength = 8)]
         public string Cep { get; set; }
         [Required]
-        [Display(Name = "Médico")]
-        public int IdMedico { get; set; }  
+        [Display(Name = "Médico")]      
+        public int IdMedico { get; set; }
         public string Rua { get; set; }
         public string Bairro { get; set; }
         [Required]
-        [StringLength(2, MinimumLength = 2)]
+       
         public string UF { get; set; }
         public string Cidade { get; set; }
-        public List<Medico> Medicos { get; set; }
 
-        public Paciente(bool prmCarregarMedicos)
+        public List<Medico> Medicos
         {
-            if (prmCarregarMedicos)
+            get
             {
-                MedicoServices Servico = new MedicoServices();
-                this.Medicos = Servico.GetAll();
+                MedicoServices med = new MedicoServices();
+                return med.GetAll();
+            }
+           private set
+            {
+
             }
         }
-
-        public Paciente()
-        {
-            
-        }
+        
     }
 }

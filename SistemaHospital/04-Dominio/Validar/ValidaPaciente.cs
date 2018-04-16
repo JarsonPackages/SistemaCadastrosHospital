@@ -14,18 +14,16 @@ namespace ProjetoC._04_Dominio.Validar
         public static bool Validar(Paciente _paciente)
         {
            
-            if (!String.IsNullOrEmpty(_paciente.Cpf) && _paciente.Cpf.Length == 11)
+            if (StrPadrao(_paciente.Cpf) && _paciente.Cpf.Length == 11)
             {
-                if (!String.IsNullOrEmpty(_paciente.Email) && Email(_paciente.Email))
+                if (StrPadrao(_paciente.Nome) && Email(_paciente.Email))
                 {
-                    if(!String.IsNullOrEmpty(_paciente.Cep) && !String.IsNullOrEmpty(_paciente.Nome))
+                    if(StrPadrao(_paciente.Cpf) && !String.IsNullOrEmpty(_paciente.Nome))
                     {
-                        if(_paciente.IdMedico != 0)
-                        {
-
+                       
                             return true;
 
-                        }
+                        
 
 
 
@@ -54,6 +52,10 @@ namespace ProjetoC._04_Dominio.Validar
         {
             bool _emailvalidado = Regex.IsMatch(_email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             return _emailvalidado;
+        }
+       static bool StrPadrao(string _str)
+        {
+            return !String.IsNullOrEmpty(_str);
         }
     }
 }

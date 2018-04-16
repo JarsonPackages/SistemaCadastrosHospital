@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -44,16 +43,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Voltar para lista", "Index", new { }, new { @class = "btn btn-default" })
                 <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
-    <div>
-        @Html.ActionLink("Voltar para lista", "Index", new { }, new { @class = "btn btn-default" })
-    </div>
+   
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

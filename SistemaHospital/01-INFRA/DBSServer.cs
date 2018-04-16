@@ -80,7 +80,7 @@ namespace ProjetoC._01_INFRA
         {
             return _con;
         }
-
+      
         public DataSet Query(string sql)
         {
             try
