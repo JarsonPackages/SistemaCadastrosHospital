@@ -55,7 +55,6 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             }
             return LP;
         }
-
         public Paciente GetById(int id)
         {
 
@@ -80,36 +79,20 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             }
             return paciente;
         }
-
         public DataSet GetMigraDGV(string _item)
         {
 
             DataSet DS = BD.Query(_item);
             return DS;
         }
-
         public bool Insert(Paciente _item)
         {
 
             try
             {
-                string sql = " INSERT INTO PACIENTE(NOME, EMAIL, CPF, CEP, RUA, BAIRRO, UF, CIDADE, IdMedico) VALUES('" + _item.Nome + "', '" + _item.Email + "', '" + _item.Cpf + "', '" + _item.Cep + "', '" + _item.Rua + "', '" + _item.Bairro + "', '" + _item.UF + "',  '" + _item.Cidade + "',  " + _item.IdMedico + ");";
-                //string sql = " INSERT INTO PACIENTE(NOME, EMAIL, CPF, CEP, RUA, BAIRRO, UF, CIDADE, IdMedico) VALUES('@NOME', '@EMAIL', '@CPF', '@CEP', '@RUA', '@BAIRRO', '@UF', '@CIDADE', @IDMEDICO);";
-                //cmd.CommandText = sql;
-                //cmd.CommandType = CommandType.Text;
-                //cmd.Parameters.Add(new SqlParameter("@NOME",_item.Nome));
-                //cmd.Parameters.Add(new SqlParameter("@EMAIL", _item.Email));
-                //cmd.Parameters.Add(new SqlParameter("@CPF", _item.Cpf));
-                //cmd.Parameters.Add(new SqlParameter("@CEP", _item.Cep));
-                //cmd.Parameters.Add(new SqlParameter("@RUA", _item.Rua));
-                //cmd.Parameters.Add(new SqlParameter("@BAIRRO", _item.Bairro));
-                //cmd.Parameters.Add(new SqlParameter("@UF", _item.UF));
-                //cmd.Parameters.Add(new SqlParameter("@CIDADE", _item.Cidade));
-                //cmd.Parameters.Add(new SqlParameter("@IDMEDICO", _item.IdMedico));
-
-                BD.ExecuteQuery(sql);
-
-
+                string sql = " INSERT INTO PACIENTE(NOME, EMAIL, CPF, CEP, RUA, BAIRRO, UF, CIDADE, IdMedico) VALUES(@NOME, @EMAIL, @CPF, @CEP, @RUA, @BAIRRO, @UF, @CIDADE, @IDMEDICO);";
+                //  string sql = " INSERT INTO PACIENTE(NOME, EMAIL, CPF, CEP, RUA, BAIRRO, UF, CIDADE, IdMedico) VALUES('" + _item.Nome + "', '" + _item.Email + "', '" + _item.Cpf + "', '" + _item.Cep + "', '" + _item.Rua + "', '" + _item.Bairro + "', '" + _item.UF + "',  '" + _item.Cidade + "',  " + _item.IdMedico + ");";
+                GetOperacaoParametros(_item, sql);
                 return true;
             }
             catch (Exception msg)
@@ -119,16 +102,44 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             }
 
         }
-
-
-
         public bool Update(Paciente _item)
         {
-            DBSServer BD = new DBSServer();
-            bool _verifica;
-            string sql = "UPDATE  PACIENTE SET NOME ='" + _item.Nome + "', EMAIL ='" + _item.Email + "',BAIRRO = '" + _item.Bairro + "', CEP ='" + _item.Cep + "',CIDADE = '" + _item.Cidade + "', CPF = '" + _item.Cpf + "',RUA = '" + _item.Rua + "', UF = '" + _item.UF + "',IdMedico= '" + _item.IdMedico + "'   WHERE ID = " + _item.Id + "  ";
-            _verifica = BD.ExecuteQuery(sql);
-            return _verifica;
+            string sql = "UPDATE  PACIENTE SET NOME =@Nome, EMAIL =@Email ,BAIRRO = @Bairro, CEP = @Cep ,CIDADE = @Cidade , CPF = @Cpf ,RUA = @Rua, UF = @Uf ,IdMedico= @IdMEdico   WHERE ID = @ID ";
+            try
+            {
+                GetOperacaoParametros(_item,sql);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        
+           
+           
+        }
+        private void GetOperacaoParametros(Paciente _item,string sql)
+        {
+            using (var con = BD.GetConnection())
+            {
+                IDbCommand cmd = con.CreateCommand();
+                cmd.CommandText = sql;
+
+                cmd.Parameters.Add(new SqlParameter("@ID", _item.Id));
+                cmd.Parameters.Add(new SqlParameter("@NOME", _item.Nome));
+                cmd.Parameters.Add(new SqlParameter("@EMAIL", _item.Email));
+                cmd.Parameters.Add(new SqlParameter("@CPF", _item.Cpf));
+                cmd.Parameters.Add(new SqlParameter("@CEP", _item.Cep));
+                cmd.Parameters.Add(new SqlParameter("@RUA", _item.Rua));
+                cmd.Parameters.Add(new SqlParameter("@BAIRRO", _item.Bairro));
+                cmd.Parameters.Add(new SqlParameter("@UF", _item.UF));
+                cmd.Parameters.Add(new SqlParameter("@CIDADE", _item.Cidade));
+                cmd.Parameters.Add(new SqlParameter("@IDMEDICO", _item.IdMedico));
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                
+            }
         }
     }
 }

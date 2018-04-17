@@ -3,6 +3,7 @@ using ProjetoC._03_MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,8 +76,9 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
             try
             {
-                string sql = "INSERT INTO MEDICO(CRM,NOME,ESPECIALIZACAO) VALUES(" + _item.CRM + ",'" + _item.Nome + "','" + _item.Especializacao + "')";
-                BD.ExecuteQuery(sql);
+                string sql = "INSERT INTO MEDICO(CRM,NOME,ESPECIALIZACAO) VALUES(@CRM, @NOME , @ESPECIALIZACAO)";
+                GetOperacaoParametros(_item, sql);
+              
                 return true;
             }
             catch (Exception msg)
@@ -94,6 +96,23 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             return _verifica;
         }
 
+        private void GetOperacaoParametros(Medico _item, string sql)
+        {
+            using (var con = BD.GetConnection())
+            {
+                IDbCommand cmd = con.CreateCommand();
+                cmd.CommandText = sql;
 
+             
+                cmd.Parameters.Add(new SqlParameter("@Crm", _item.CRM));
+                cmd.Parameters.Add(new SqlParameter("@Especializacao", _item.Especializacao));
+                cmd.Parameters.Add(new SqlParameter("@Nome", _item.Nome));
+               
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+        }
     }
 }

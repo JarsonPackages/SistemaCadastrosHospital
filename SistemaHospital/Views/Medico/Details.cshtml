@@ -9,37 +9,50 @@
 <h2>Detalhes sobre , @Html.DisplayFor(model=> model.Nome)</h2>
 
 <div>
-    <h4>Médico</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CRM)
-        </dt>
+    <table>
+        <tr>
+            <th rowspan="2" colspan="2">
+               
+                <img src="~/Content/Img/doctor.png" height="200" />
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CRM)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CRM)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.CRM)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Especializacao)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Especializacao)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Especializacao)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Especializacao)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-       
-        
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
 
-    </dl>
-   
+
+
+                </dl>
+
+            </td>
+        </tr>
+    </table>
+  
+
 </div>
 <p>
     @Html.ActionLink("Voltar para Lista", "Index", new { }, new { @class = "btn btn-default" })

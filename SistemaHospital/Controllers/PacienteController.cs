@@ -1,5 +1,6 @@
 ﻿using ProjetoC._03_MODEL;
 using ProjetoC._04_Dominio;
+using ProjetoC._04_Dominio.Validar;
 using SistemaHospital.ApiCorreiosCep;
 using System;
 using System.Collections.Generic;
@@ -25,21 +26,22 @@ namespace SistemaHospital.Controllers
         {
             return View(services.Get(id));
         }
-     
+
         // GET: Paciente/Create
+        [HttpGet]
         public ActionResult Create()
         {
-            Paciente paciente = new Paciente();
-            ViewBag.IdMedico = new SelectList(paciente.Medicos, "Id", "Nome");
-
+           
             return View();
         }
+    
+       
         public PacienteController()
         {
             MedicoServices med = new MedicoServices();
             Paciente paciente = new Paciente();
-            ViewBag.IdMedico = new SelectList(paciente.Medicos, "Id", "Nome");
-            ViewBag.qtdMedico =med.GetAll().Count ;
+            ViewBag.IdMedico = new SelectList(med.GetAll(), "Id", "Nome");
+            ViewBag.qtdMedico =med.GetAll().Count ; 
             ViewBag.qtdPaciente = services.GetAll().Count;
         }
         
@@ -50,17 +52,16 @@ namespace SistemaHospital.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Paciente _user)
         {
-           
-           
+
 
             if (services.Insert(_user))
             {
+
                 return RedirectToAction("Index");
             }
             else
             {
-                Paciente paciente = new Paciente();
-                ViewBag.ClienteId = new SelectList(paciente.Medicos, "Id", "Nome");
+              
 
                 return View();
             }
@@ -71,6 +72,7 @@ namespace SistemaHospital.Controllers
         // GET: Paciente/Edit/5
         public ActionResult Edit(int id)
         {
+            
             return View(services.Get(id));
         }
 

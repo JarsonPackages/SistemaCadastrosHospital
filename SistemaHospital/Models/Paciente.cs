@@ -1,10 +1,7 @@
 ﻿using ProjetoC._04_Dominio;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProjetoC._03_MODEL
 {
@@ -37,8 +34,11 @@ namespace ProjetoC._03_MODEL
         {
             get
             {
-                MedicoServices med = new MedicoServices();
-                return med.GetAll();
+              using(var med = new MedicoServices())
+                {
+                    return med.GetAll();
+                }
+               
             }
            private set
             {

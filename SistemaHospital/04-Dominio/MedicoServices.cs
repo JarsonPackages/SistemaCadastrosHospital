@@ -10,26 +10,21 @@ using System.Threading.Tasks;
 
 namespace ProjetoC._04_Dominio
 {
-    class MedicoServices : IServices<Medico>
-    {
-        MedicoRepositorio repositorio = new MedicoRepositorio();
-
-       
+    class MedicoServices : IServices<Medico>,IDisposable
+    { 
+        MedicoRepositorio repositorio = new MedicoRepositorio();     
         public Medico Get(int _user)
-        {
-            var _medico = repositorio.GetById(_user);
-            
+        {     
+            var _medico = repositorio.GetById(_user);    
             return _medico;
         }
-
         public List<Medico> GetAll()
         {
             List<Medico> pacientes = new List<Medico>();
             pacientes = repositorio.GetAll();
            
             return pacientes;
-        }
-        
+        }       
         public bool Insert(Medico _user)
         {
             
@@ -48,10 +43,13 @@ namespace ProjetoC._04_Dominio
             
 
         }
-
         public bool Update(Medico _user)
         {
            return  repositorio.Update(_user);
         }
+        public void Dispose()
+        {
+           //disposable
+        }     
     }
 }

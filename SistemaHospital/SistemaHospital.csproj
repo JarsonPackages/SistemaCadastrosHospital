@@ -110,6 +110,8 @@
     <Content Include="Content\css\fonts.googleapis.com.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Img\atencion-inmediata.png" />
+    <Content Include="Content\Img\doctor.png" />
     <Content Include="Content\Img\download.png" />
     <Content Include="Content\Img\new_arrow.png" />
     <Content Include="Content\MainPage.css" />

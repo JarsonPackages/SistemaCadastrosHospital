@@ -13,11 +13,18 @@ namespace SistemaHospital.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            PacienteServices pac = new PacienteServices();
-            MedicoServices med = new MedicoServices();
+           
+           
+            using(var medico = new MedicoServices())
+            {
+                ViewBag.qtdMedico = medico.GetAll().Count;
+            }
+            using (var paciente = new PacienteServices())
+            {
+                ViewBag.qtdPaciente = paciente.GetAll().Count;
+            }
 
-            ViewBag.qtdMedico = med.GetAll().Count;
-            ViewBag.qtdPaciente = pac.GetAll().Count;
+             
             return View();
         }
       

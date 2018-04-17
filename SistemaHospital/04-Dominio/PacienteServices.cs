@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace ProjetoC._04_Dominio
 {
-    class PacienteServices : IServices<Paciente>
+    class PacienteServices : IServices<Paciente>,IDisposable
     {
         PacienteRepositorio repositorio = new PacienteRepositorio();
 
@@ -15,6 +15,12 @@ namespace ProjetoC._04_Dominio
         {
             return repositorio.Delete(_user);
 
+        }
+
+        public void Dispose()
+        {
+          
+          
         }
 
         public Paciente Get(int _user)

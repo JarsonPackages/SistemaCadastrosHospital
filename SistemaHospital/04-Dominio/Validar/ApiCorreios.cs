@@ -21,10 +21,10 @@ namespace ProjetoC._04_Dominio.Validar
                 }
                 catch (System.ServiceModel.FaultException)
                 {
-                    
+                    return null;
                 }
 
-                return null;
+                
             }
 
             return null;
