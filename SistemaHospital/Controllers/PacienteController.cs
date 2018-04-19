@@ -53,18 +53,27 @@ namespace SistemaHospital.Controllers
         public ActionResult Create(Paciente _user)
         {
 
-
-            if (services.Insert(_user))
+            if (ModelState.IsValid)
             {
+                if (services.Insert(_user))
+                {
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+
+
+                    return View();
+                }
             }
             else
             {
-              
-
+                ModelState.AddModelError("Cep", "Cep Incorreto");
                 return View();
             }
+           
+
 
 
         }
@@ -77,7 +86,7 @@ namespace SistemaHospital.Controllers
         }
 
         // POST: Paciente/Edit/5
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Paciente _user)
         {
@@ -100,7 +109,7 @@ namespace SistemaHospital.Controllers
         }
 
         // POST: Paciente/Delete/5
-        [HttpPost]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Paciente _user)
         {

@@ -29,6 +29,11 @@ namespace SistemaHospital.Controllers
             }
         }
 
+        ~MedicoController()
+        {
+            
+        }
+
         // GET: Medico/Details/5
         public ActionResult Details(int id)
         {

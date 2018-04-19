@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <img src="~/Content/Img/download.png" />
             <h1>Seja Bem Vindo</h1>
-           
+
         </div>
         <div class="col-md-5">
             <canvas id="myChart" width="300" height="300"></canvas>
@@ -19,19 +19,22 @@ var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ["Pacientes", "Médicos"],
+        labels: ["Pacientes", "Médicos","Hospitais"],
         datasets: [{
             label: 'Hospital IA',
-            data: [@ViewBag.qtdPaciente, @ViewBag.qtdMedico],
+            data: [@ViewBag.qtdPaciente, @ViewBag.qtdMedico,3],
             backgroundColor: [
                 'rgba(3, 99, 255, 0.6)',
-                'rgba(3, 255, 64, 0.5)'
+                'rgba(3, 255, 64, 0.5)',
+                'rgba(232,30,64,0.8)'
             ],
             borderColor: [
                 'rgba(3,99,255,1)',
-                'rgba(3, 255, 64, 1)'
+                'rgba(3, 255, 64, 1)',
+                'rgba(255,68,46,1)'
+
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -49,6 +52,8 @@ var myChart = new Chart(ctx, {
 
 
     </div>
+
+    
 </div>
 
 
