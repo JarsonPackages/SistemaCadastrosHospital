@@ -15,7 +15,7 @@ namespace ProjetoC._01_INFRA
         public DBSServer()
         {
             Console.WriteLine("Contrutor Ok, Abrindo conexao");
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+@"C:\Users\CDS\Desktop\HospitalSistemaCadastro-master\SistemaHospital\App_Data\AcessSql.mdf;"+"Integrated Security=True");
+            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+ @"C:\Users\CDS\Desktop\Sistema Hospital\SistemaHospital\App_Data\AcessSql.mdf;" + "Integrated Security=True");
         }
         public DBSServer(string strCon)
         {
@@ -107,11 +107,7 @@ namespace ProjetoC._01_INFRA
                     _con.Close();
                 }
 
-            }
-           
-           
-            
-        }
-      
+            }     
+        }    
     }
 }

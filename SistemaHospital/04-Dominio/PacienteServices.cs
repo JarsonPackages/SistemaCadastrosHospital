@@ -37,10 +37,7 @@ namespace ProjetoC._04_Dominio
         {
             List<Paciente> pacientes = new List<Paciente>();
             pacientes = repositorio.GetAll();
-            if (pacientes.Count == 0)
-            {
-                return null;
-            }
+            
             return pacientes;
         }
 

@@ -52,52 +52,29 @@ namespace SistemaHospital.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Paciente _user)
         {
-          
-                if (services.Insert(_user))
+
+            if (services.Insert(_user))
+            {
+
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var erro in ValidaPaciente.erroMed)
                 {
 
-                    return RedirectToAction("Index");
+                    ModelState.AddModelError(erro.campo, erro.msg);
+
 
                 }
-                else
-                {
-                    foreach (var erro in ValidaPaciente.erroMed)
-                    {
-                        if (erro.campo.Equals("Nome"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Email"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Cpf"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Cpf"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Cep"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Rua"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("IdMedico"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Bairro"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                        if (erro.campo.Equals("Cidade"))
-                            ModelState.AddModelError(erro.campo, erro.msg);
-
-                    }
                 ValidaPaciente.erroMed.Clear();
-                    return View();
-                }
-           
-              
-                
-          
+                return View();
+            }
+
+
+
+
         }
 
         // GET: Paciente/Edit/5
@@ -108,7 +85,7 @@ namespace SistemaHospital.Controllers
         }
 
         // POST: Paciente/Edit/5
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Paciente _user)
         {
@@ -131,7 +108,7 @@ namespace SistemaHospital.Controllers
         }
 
         // POST: Paciente/Delete/5
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Paciente _user)
         {

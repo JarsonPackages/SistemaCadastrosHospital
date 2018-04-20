@@ -44,7 +44,10 @@
             <div class="col-md-10">
                 <div class="styled-select">
                     @Html.DropDownList("IdMedico")
+
                 </div>
+                @Html.ValidationMessageFor(model=>model.IdMedico,"",new { @class="text-danger"})
+               
 
             </div>
         </div>

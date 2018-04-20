@@ -53,6 +53,12 @@ namespace ProjetoC._04_Dominio.Validar
                 Debug.WriteLine("cidade ok");
             else
                 erroMed.Add(new Erro("Cidade", string.Format(UltilStr.exibirErros, " Cidade")));
+            //Medicos
+            if (UltilStr.StrPadrao(_classe.IdMedico.ToString(),0,int.MaxValue))
+                Debug.WriteLine("medico ok");
+            else
+                erroMed.Add(new Erro("IdMedico", " Não há Médicos cadastrados. *"));
+
             if (erroMed.Count == 0)
             {
                 return true;

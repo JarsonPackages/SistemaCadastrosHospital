@@ -13,7 +13,7 @@ namespace SistemaHospital.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            ModelState.AddModelError("oi.....................",new Exception());
+            
             using(var medico = new MedicoServices())
             {
                 ViewBag.qtdMedico = medico.GetAll().Count;

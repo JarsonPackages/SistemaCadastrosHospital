@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProjetoC._02_REPOSITORIO._01_CORE
 {
@@ -30,10 +28,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
             List<Medico> LP = new List<Medico>();
             DataSet DS = BD.Query("SELECT * FROM MEDICO ORDER BY NOME,CRM; ");
-           if(DS.Tables[0].Rows == null)
-            {
-                return null;
-            }
+           
             foreach (DataRow DR in DS.Tables[0].Rows)
             {
                 LP.Add(new Medico()

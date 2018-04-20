@@ -26,7 +26,7 @@ namespace SistemaHospital._04_Dominio.Ultil
         }
         public static bool StrPadrao(string value, int tamanho_minimo, int tamanho_maximo)
         {
-            if(value.Length >= tamanho_minimo && value.Length <= tamanho_maximo)
+            if(value.Length >= tamanho_minimo && value.Length <= tamanho_maximo && int.Parse(value.ToString()) != 0)
             {
                 return StrPadrao(value);
             }

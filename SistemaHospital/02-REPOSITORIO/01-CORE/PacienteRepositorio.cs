@@ -59,7 +59,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
 
             Paciente paciente = null;
-            DataSet DS = BD.Query("Select * from  Paciente where id = " + id + " ");
+            DataSet DS = BD.Query("Select * from  Paciente where id = " + id + "; ");
             foreach (DataRow DR in DS.Tables[0].Rows)
             {
                 paciente = new Paciente()

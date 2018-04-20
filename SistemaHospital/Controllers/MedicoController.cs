@@ -32,10 +32,6 @@ namespace SistemaHospital.Controllers
             }
         }
 
-        ~MedicoController()
-        {
-            
-        }
 
         // GET: Medico/Details/5
         public ActionResult Details(int id)
@@ -65,18 +61,9 @@ namespace SistemaHospital.Controllers
               
                 foreach (var erro in ValidaMedico.erroMed)
                 {
-                    if (erro.campo.Equals("CRM"))
-                    {
+                    
                         ModelState.AddModelError(erro.campo,erro.msg);
-                    }
-                    if (erro.campo.Equals("Nome"))
-                    {
-                        ModelState.AddModelError(erro.campo, erro.msg);
-                    }
-                    if (erro.campo.Equals("Especializacao"))
-                    {
-                        ModelState.AddModelError(erro.campo, erro.msg);
-                    }
+                   
                 }
                 SistemaHospital._04_Dominio.Validar.ValidaMedico.erroMed.Clear();
                 return View();
