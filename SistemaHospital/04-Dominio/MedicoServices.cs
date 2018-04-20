@@ -1,6 +1,7 @@
 ﻿using ProjetoC._02_REPOSITORIO;
 using ProjetoC._02_REPOSITORIO._01_CORE;
 using ProjetoC._03_MODEL;
+using SistemaHospital._04_Dominio.Validar;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,9 +28,21 @@ namespace ProjetoC._04_Dominio
         }       
         public bool Insert(Medico _user)
         {
-            
+            if (ValidaMedico.validar(_user))
+            {
+                //Inicio Regra de Negocio
+
+                //Final
+                repositorio.Insert(_user);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+          
                 
-            return     repositorio.Insert(_user);
+           
              
            
           

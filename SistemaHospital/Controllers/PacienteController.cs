@@ -13,7 +13,7 @@ namespace SistemaHospital.Controllers
     public class PacienteController : Controller
     {
 
-        
+
         PacienteServices services = new PacienteServices();
         // GET: Paciente
         public ActionResult Index()
@@ -31,57 +31,79 @@ namespace SistemaHospital.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-           
+
             return View();
         }
-    
-       
+
+
         public PacienteController()
         {
             MedicoServices med = new MedicoServices();
             Paciente paciente = new Paciente();
             ViewBag.IdMedico = new SelectList(med.GetAll(), "Id", "Nome");
-            ViewBag.qtdMedico =med.GetAll().Count ; 
+            ViewBag.qtdMedico = med.GetAll().Count;
             ViewBag.qtdPaciente = services.GetAll().Count;
         }
-        
+
 
         // POST: Paciente/Create
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Paciente _user)
         {
-
-            if (ModelState.IsValid)
-            {
+          
                 if (services.Insert(_user))
                 {
 
                     return RedirectToAction("Index");
+
                 }
                 else
                 {
+                    foreach (var erro in ValidaPaciente.erroMed)
+                    {
+                        if (erro.campo.Equals("Nome"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
 
+                        if (erro.campo.Equals("Email"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
 
+                        if (erro.campo.Equals("Cpf"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                        if (erro.campo.Equals("Cpf"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                        if (erro.campo.Equals("Cep"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                        if (erro.campo.Equals("Rua"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                        if (erro.campo.Equals("IdMedico"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                        if (erro.campo.Equals("Bairro"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                        if (erro.campo.Equals("Cidade"))
+                            ModelState.AddModelError(erro.campo, erro.msg);
+
+                    }
+                ValidaPaciente.erroMed.Clear();
                     return View();
                 }
-            }
-            else
-            {
-                ModelState.AddModelError("Cep", "Cep Incorreto");
-                return View();
-            }
            
-
-
-
+              
+                
+          
         }
 
         // GET: Paciente/Edit/5
         public ActionResult Edit(int id)
         {
-            
+
             return View(services.Get(id));
         }
 

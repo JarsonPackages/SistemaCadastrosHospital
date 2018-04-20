@@ -1,7 +1,10 @@
 ﻿using ProjetoC._03_MODEL;
 using ProjetoC._04_Dominio;
+using SistemaHospital._04_Dominio.Ultil;
+using SistemaHospital._04_Dominio.Validar;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -52,16 +55,37 @@ namespace SistemaHospital.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Medico _user)
         {
-            try
+            if (services.Insert(_user))
             {
-                services.Insert(_user);
-
                 return RedirectToAction("Index");
+               
             }
-            catch
+            else
             {
+              
+                foreach (var erro in ValidaMedico.erroMed)
+                {
+                    if (erro.campo.Equals("CRM"))
+                    {
+                        ModelState.AddModelError(erro.campo,erro.msg);
+                    }
+                    if (erro.campo.Equals("Nome"))
+                    {
+                        ModelState.AddModelError(erro.campo, erro.msg);
+                    }
+                    if (erro.campo.Equals("Especializacao"))
+                    {
+                        ModelState.AddModelError(erro.campo, erro.msg);
+                    }
+                }
+                SistemaHospital._04_Dominio.Validar.ValidaMedico.erroMed.Clear();
                 return View();
             }
+                
+
+               
+            
+           
         }
 
         // GET: Medico/Edit/5

@@ -136,7 +136,10 @@
     <Compile Include="04-Dominio\IServices.cs" />
     <Compile Include="04-Dominio\MedicoServices.cs" />
     <Compile Include="04-Dominio\PacienteServices.cs" />
+    <Compile Include="04-Dominio\Ultil\Erro.cs" />
+    <Compile Include="04-Dominio\Ultil\UltilStr.cs" />
     <Compile Include="04-Dominio\Validar\ApiCorreios.cs" />
+    <Compile Include="04-Dominio\Validar\ValidaMedico.cs" />
     <Compile Include="04-Dominio\Validar\ValidaPaciente.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Connected Services\ApiCorreiosCep\Reference.cs">
