@@ -87,14 +87,21 @@ namespace SistemaHospital.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Medico _user)
         {
-            try
+            if (services.Update(_user))
             {
-                services.Update(_user);
-
                 return RedirectToAction("Index");
+
             }
-            catch
+            else
             {
+
+                foreach (var erro in ValidaMedico.erroMed)
+                {
+
+                    ModelState.AddModelError(erro.campo, erro.msg);
+
+                }
+                SistemaHospital._04_Dominio.Validar.ValidaMedico.erroMed.Clear();
                 return View();
             }
         }

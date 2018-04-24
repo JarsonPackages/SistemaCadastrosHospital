@@ -8,98 +8,155 @@
 <h2>Editar Paciente</h2>
 
 
-@using (Html.BeginForm())
-{
+<form action="@Url.Action("Edit",new {id = Model.Id })" method="post">
+
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-  
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <div class="form-horizontal">
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <hr />
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        @Html.HiddenFor(model => model.Id)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Medicos, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="styled-select">
-                @Html.DropDownList("IdMedico")
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Nome">Nome</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value="@Model.Nome" />
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
             </div>
+        </div>
 
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Email">Email</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Email" name="Email" type="text" value="@Model.Email" />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Cpf">Cpf</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Cpf" name="Cpf" type="text" value="@Model.Cpf" />
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Medicos">Medicos</label>
+            <div class="col-md-10">
+                <div class="styled-select">
+                    <select id="IdMedico" name="IdMedico">
+                        @foreach (var med in Model.Medicos)
+                        {
+                            if (med.ID == Model.IdMedico)
+                            {
+                                <option selected value="@med.ID">@med.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@med.ID">@med.Nome</option>
+                            }
+
+                        }
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Especialização</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Cep" name="Cep" type="text" value="@Model.Cep" />
+                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Rua">Rua</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Rua" name="Rua" type="text" value="@Model.Rua" />
+                @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Bairro">Bairro</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Bairro" name="Bairro" type="text" value="@Model.Cidade" />
+                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="UF">UF</label>
+            <div class="col-md-10">
+                <select name="UF" class="form-control text-box single-line">
+                    <option selected value="@Model.UF">@Model.UF</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Cidade">Cidade</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Cidade" name="Cidade" type="text" value="@Model.Cidade" />
+                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-default" href="/Paciente">Voltar para lista.</a>
+                <input type="submit" value="Salvar" class="btn btn-success" />
+
+            </div>
         </div>
     </div>
+</form>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Especialização</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Rua, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Rua, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.UF, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UF, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink("Voltar para lista.", "Index", new { }, new { @class = "btn btn-default" })
-            <input type="submit" value="Salvar" class="btn btn-success" />
 
-        </div>
-    </div>
-</div>
-}
 
 

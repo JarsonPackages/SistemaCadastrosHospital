@@ -7,82 +7,100 @@
 
 <h2>Excluir Paciente</h2>
 <hr />
-<div>
-   <br />
+<div class="container">
+    <br />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            Nome
+            <!--Html.DisplayNameFor(model => model.Nome)=   -->
+
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nome)
+            @Model.Nome
+
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Model.Email
+        </dd>
+        <dt>
+            Cpf
+        </dt>
+
+        <dd>
+            @Model.Cpf
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cpf)
+            Cep
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cpf)
+            @Model.Cep
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cep)
+            Rua
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cep)
+            @Model.Rua
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rua)
+            Bairro
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Rua)
+            @Model.Bairro
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Bairro)
+            Estado
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Bairro)
+            @Model.UF
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UF)
+            Cidade
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UF)
+            @Model.Cidade
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Cidade)
+            Medico
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cidade)
+            @foreach (var item in Model.Medicos)
+            {
+                if (Model.IdMedico == item.ID)
+                {
+                    @item.Nome
+                }
+
+            }
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    <form action="@Url.Action("Delete",new { id = Model.Id })" method="post">
 
-    <div class="form-actions no-color">
-        @Html.ActionLink("Voltar para lista", "Index", new { }, new { @class = "btn btn-default" }) |
-        <input type="submit" value="Excluir" class="btn btn-danger" /> 
 
-    </div>
-    }
+        @Html.AntiForgeryToken() <!-- GEra o Token de validacao -->
+
+        <div class="form-actions no-color">
+            <a class="btn btn-default" href="/Paciente">Voltar para lista</a> |
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+
+        </div>
+    </form>
 </div>

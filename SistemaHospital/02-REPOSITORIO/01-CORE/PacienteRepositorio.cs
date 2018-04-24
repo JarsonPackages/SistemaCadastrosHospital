@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using ProjetoC._01_INFRA;
+using SistemaHospital._02_REPOSITORIO._01_CORE;
 
 namespace ProjetoC._02_REPOSITORIO._01_CORE
 {
@@ -14,14 +15,11 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
 
         public bool Delete(Paciente _item)
         {
-
-            bool _verifica;
-
-            _verifica = BD.ExecuteQuery("DELETE FROM PACIENTE WHERE ID= " + _item.Id + " ; ");
-            return _verifica;
-
+            string sql = "DELETE FROM PACIENTE WHERE ID= @ID ; ";
+            List<Parametros> parametros = new List<Parametros>();
+            parametros.Add(new Parametros("@ID",_item.Id));
+            return BD.ExecuteQuery(sql, parametros);
         }
-
         public void Dispose()
         {
             throw new NotImplementedException();
@@ -91,9 +89,19 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             try
             {
                 string sql = " INSERT INTO PACIENTE(NOME, EMAIL, CPF, CEP, RUA, BAIRRO, UF, CIDADE, IdMedico) VALUES(@NOME, @EMAIL, @CPF, @CEP, @RUA, @BAIRRO, @UF, @CIDADE, @IDMEDICO);";
-                //  string sql = " INSERT INTO PACIENTE(NOME, EMAIL, CPF, CEP, RUA, BAIRRO, UF, CIDADE, IdMedico) VALUES('" + _item.Nome + "', '" + _item.Email + "', '" + _item.Cpf + "', '" + _item.Cep + "', '" + _item.Rua + "', '" + _item.Bairro + "', '" + _item.UF + "',  '" + _item.Cidade + "',  " + _item.IdMedico + ");";
-                GetOperacaoParametros(_item, sql);
-                return true;
+                List<Parametros> parametros = new List<Parametros>();
+
+                parametros.Add(new Parametros("@ID", _item.Id));
+                parametros.Add(new Parametros("@NOME", _item.Nome));
+                parametros.Add(new Parametros("@EMAIL", _item.Email));
+                parametros.Add(new Parametros("@CPF", _item.Cpf));
+                parametros.Add(new Parametros("@CEP", _item.Cep));
+                parametros.Add(new Parametros("@RUA", _item.Rua));
+                parametros.Add(new Parametros("@BAIRRO", _item.Bairro));
+                parametros.Add(new Parametros("@UF", _item.UF));
+                parametros.Add(new Parametros("@CIDADE", _item.Cidade));
+                parametros.Add(new Parametros("@IDMEDICO", _item.IdMedico));
+                return BD.ExecuteQuery(sql, parametros);
             }
             catch (Exception msg)
             {
@@ -107,8 +115,19 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
             string sql = "UPDATE  PACIENTE SET NOME =@Nome, EMAIL =@Email ,BAIRRO = @Bairro, CEP = @Cep ,CIDADE = @Cidade , CPF = @Cpf ,RUA = @Rua, UF = @Uf ,IdMedico= @IdMEdico   WHERE ID = @ID ";
             try
             {
-                GetOperacaoParametros(_item,sql);
-                return true;
+                List<Parametros> parametros = new List<Parametros>();
+
+                parametros.Add(new Parametros("@ID", _item.Id));
+                parametros.Add(new Parametros("@NOME", _item.Nome));
+               parametros.Add(new Parametros("@EMAIL", _item.Email));
+                parametros.Add(new Parametros("@CPF", _item.Cpf));
+                parametros.Add(new Parametros("@CEP", _item.Cep));
+                parametros.Add(new Parametros("@RUA", _item.Rua));
+               parametros.Add(new Parametros("@BAIRRO", _item.Bairro));
+                parametros.Add(new Parametros("@UF", _item.UF));
+               parametros.Add(new Parametros("@CIDADE", _item.Cidade));
+                parametros.Add(new Parametros("@IDMEDICO", _item.IdMedico));
+                return BD.ExecuteQuery(sql, parametros);
             }
             catch
             {
@@ -118,28 +137,6 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
            
            
         }
-        private void GetOperacaoParametros(Paciente _item,string sql)
-        {
-            using (var con = BD.GetConnection())
-            {
-                IDbCommand cmd = con.CreateCommand();
-                cmd.CommandText = sql;
-
-                cmd.Parameters.Add(new SqlParameter("@ID", _item.Id));
-                cmd.Parameters.Add(new SqlParameter("@NOME", _item.Nome));
-                cmd.Parameters.Add(new SqlParameter("@EMAIL", _item.Email));
-                cmd.Parameters.Add(new SqlParameter("@CPF", _item.Cpf));
-                cmd.Parameters.Add(new SqlParameter("@CEP", _item.Cep));
-                cmd.Parameters.Add(new SqlParameter("@RUA", _item.Rua));
-                cmd.Parameters.Add(new SqlParameter("@BAIRRO", _item.Bairro));
-                cmd.Parameters.Add(new SqlParameter("@UF", _item.UF));
-                cmd.Parameters.Add(new SqlParameter("@CIDADE", _item.Cidade));
-                cmd.Parameters.Add(new SqlParameter("@IDMEDICO", _item.IdMedico));
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                
-            }
-        }
+      
     }
 }

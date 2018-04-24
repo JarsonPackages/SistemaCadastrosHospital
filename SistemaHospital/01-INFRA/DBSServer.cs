@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SistemaHospital._02_REPOSITORIO._01_CORE;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ namespace ProjetoC._01_INFRA
         public DBSServer()
         {
             Console.WriteLine("Contrutor Ok, Abrindo conexao");
-            _con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+ @"C:\Users\CDS\Desktop\Sistema Hospital\SistemaHospital\App_Data\AcessSql.mdf;" + "Integrated Security=True");
+            _con = new SqlConnection("server=COMERCIAL-02; database=HOSPITAL;User Id=sa ; Password=123;");
         }
         public DBSServer(string strCon)
         {
@@ -34,7 +36,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
+                Debug.WriteLine("Alert Alert, Erro:  " + msg.Message);
                 return -1;
             }
             finally
@@ -47,18 +49,24 @@ namespace ProjetoC._01_INFRA
             }
         }
 
-        public bool ExecuteQuery(string sql)
+       
+        public bool ExecuteQuery(string sql, List<Parametros> parametros)
         {
-           
+
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, _con);
+                foreach(var _ass in parametros)
+                {
+                    cmd.Parameters.AddWithValue(_ass.Name, _ass.Value);
+                    
+                }
                 _con.Open();
-               
+
                 cmd.ExecuteNonQuery();
                 _con.Close();
                 return true;
-               
+
             }
             catch (Exception msg)
             {
@@ -97,7 +105,7 @@ namespace ProjetoC._01_INFRA
             }
             catch (Exception msg)
             {
-                Console.WriteLine("Alert Alert, Erro: " + msg.Message);
+               Debug.WriteLine("Alert Alert, Erro: " + msg.Message);
                 return  null;
             }
             finally
@@ -108,6 +116,7 @@ namespace ProjetoC._01_INFRA
                 }
 
             }     
-        }    
+        }
+       
     }
 }

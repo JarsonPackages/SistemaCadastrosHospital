@@ -28,10 +28,10 @@ namespace SistemaHospital.Controllers
         }
 
         // GET: Paciente/Create
-        [HttpGet]
+       
         public ActionResult Create()
         {
-
+         
             return View();
         }
 
@@ -89,14 +89,22 @@ namespace SistemaHospital.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Paciente _user)
         {
-            try
+            if (services.Update(_user))
             {
-                services.Update(_user);
 
                 return RedirectToAction("Index");
+
             }
-            catch
+            else
             {
+                foreach (var erro in ValidaPaciente.erroMed)
+                {
+
+                    ModelState.AddModelError(erro.campo, erro.msg);
+
+
+                }
+                ValidaPaciente.erroMed.Clear();
                 return View();
             }
         }

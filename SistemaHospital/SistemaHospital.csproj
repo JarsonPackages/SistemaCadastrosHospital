@@ -97,10 +97,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="App_Data\AcessSql.mdf" />
-    <Content Include="App_Data\AcessSql_log.ldf">
-      <DependentUpon>AcessSql.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\ComandosDoBanco.txt" />
     <Content Include="Content\css\ace-rtl.min.css" />
     <Content Include="Content\css\ace-skins.min.css" />
@@ -118,6 +114,8 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\ScriptTemplate\ace-elements.min.js" />
     <Content Include="Scripts\ScriptTemplate\ace-extra.min.js" />
@@ -132,6 +130,7 @@
     <Compile Include="01-INFRA\IConexao.cs" />
     <Compile Include="02-REPOSITORIO\01-CORE\MedicoRepositorio.cs" />
     <Compile Include="02-REPOSITORIO\01-CORE\PacienteRepositorio.cs" />
+    <Compile Include="02-REPOSITORIO\Parametros.cs" />
     <Compile Include="02-REPOSITORIO\IRepositorio.cs" />
     <Compile Include="04-Dominio\IServices.cs" />
     <Compile Include="04-Dominio\MedicoServices.cs" />

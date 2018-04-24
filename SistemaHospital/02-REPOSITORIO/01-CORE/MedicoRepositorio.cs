@@ -1,5 +1,6 @@
 ﻿using ProjetoC._01_INFRA;
 using ProjetoC._03_MODEL;
+using SistemaHospital._02_REPOSITORIO._01_CORE;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,8 +15,11 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public bool Delete(Medico _item)
         {
             bool _verifica;
-
-            _verifica = BD.ExecuteQuery("DELETE FROM MEDICO WHERE ID=" +_item.ID + "; ");
+            string sql = "DELETE FROM MEDICO WHERE ID= @ID  ";
+            List<Parametros> parametros = new List<Parametros>();
+            parametros.Add(new Parametros("@ID", _item.ID));
+           
+            _verifica = BD.ExecuteQuery(sql , parametros);
             return _verifica;
         }
 
@@ -46,7 +50,7 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public Medico GetById(int id)
         {
             Medico LP = new Medico();
-            DataSet DS = BD.Query("SELECT * FROM MEDICO WHERE ID= "+id+" ");
+            DataSet DS = BD.Query("SELECT * FROM MEDICO WHERE ID= "+id+" ; ");
             foreach (DataRow DR in DS.Tables[0].Rows)
             {
                LP =  new Medico()
@@ -71,10 +75,14 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         {
             try
             {
-                string sql = "INSERT INTO MEDICO(CRM,NOME,ESPECIALIZACAO) VALUES(@CRM, @NOME , @ESPECIALIZACAO)";
-                GetOperacaoParametros(_item, sql);
-              
-                return true;
+                List<Parametros> parametros = new List<Parametros>();
+                string sql = "INSERT INTO MEDICO(CRM,NOME,ESPECIALIZACAO) VALUES(@CRM, @NOME , @ESPECIALIZACAO) ;";
+                parametros.Add(new Parametros("@CRM", _item.CRM));
+                parametros.Add(new Parametros("@NOME", _item.Nome));
+                parametros.Add(new Parametros("@ESPECIALIZACAO", _item.Especializacao));
+             
+
+                return BD.ExecuteQuery(sql, parametros);
             }
             catch (Exception msg)
             {
@@ -86,28 +94,16 @@ namespace ProjetoC._02_REPOSITORIO._01_CORE
         public bool Update(Medico _item)
         {
             bool _verifica;
-            string sql = "UPDATE  MEDICO SET NOME='"+_item.Nome+"', ESPECIALIZACAO='"+_item.Especializacao+"'  WHERE ID = " + _item.ID + "  ";
-            _verifica = BD.ExecuteQuery(sql);
+            string sql = "UPDATE  MEDICO SET NOME= @NOME, ESPECIALIZACAO=@Especializacao  WHERE ID = @ID   ";
+            List<Parametros> parametros = new List<Parametros>();
+            parametros.Add(new Parametros("@NOME", _item.Nome));
+            parametros.Add(new Parametros("@Especializacao", _item.Especializacao));
+            parametros.Add(new Parametros("@ID", _item.ID));
+
+            _verifica = BD.ExecuteQuery(sql,parametros);
             return _verifica;
         }
 
-        private void GetOperacaoParametros(Medico _item, string sql)
-        {
-            using (var con = BD.GetConnection())
-            {
-                IDbCommand cmd = con.CreateCommand();
-                cmd.CommandText = sql;
-
-             
-                cmd.Parameters.Add(new SqlParameter("@Crm", _item.CRM));
-                cmd.Parameters.Add(new SqlParameter("@Especializacao", _item.Especializacao));
-                cmd.Parameters.Add(new SqlParameter("@Nome", _item.Nome));
-               
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-
-            }
-        }
+       
     }
 }
