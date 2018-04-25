@@ -22,6 +22,7 @@ namespace SistemaHospital.Controllers
         }
         public MedicoController()
         {
+            
             using (var medico = new MedicoServices())
             {
                 ViewBag.qtdMedico = medico.GetAll().Count;
@@ -30,23 +31,16 @@ namespace SistemaHospital.Controllers
             {
                 ViewBag.qtdPaciente = paciente.GetAll().Count;
             }
-        }
-
-
-        // GET: Medico/Details/5
+        }     
         public ActionResult Details(int id)
         {
            
             return View(services.Get(id));
-        }
-
-        // GET: Medico/Create
+        }   
         public ActionResult Create()
         {
             return View();
-        }
-
-        // POST: Medico/Create
+        }     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Medico _user)
@@ -73,16 +67,12 @@ namespace SistemaHospital.Controllers
                
             
            
-        }
-
-        // GET: Medico/Edit/5
+        }    
         public ActionResult Edit(int id)
         {
 
             return View(services.Get(id));
-        }
-
-        // POST: Medico/Edit/5
+        }   
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Medico _user)
@@ -104,15 +94,11 @@ namespace SistemaHospital.Controllers
                 SistemaHospital._04_Dominio.Validar.ValidaMedico.erroMed.Clear();
                 return View();
             }
-        }
-
-        // GET: Medico/Delete/5
+        }   
         public ActionResult Delete(int id)
         {
             return View(services.Get(id));
-        }
-
-        // POST: Medico/Delete/5
+        }    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Medico _user)

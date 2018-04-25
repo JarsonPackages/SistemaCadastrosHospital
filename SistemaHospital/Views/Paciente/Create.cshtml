@@ -9,136 +9,137 @@
 
 
 
-    <h4>Adicione um Paciente.</h4>
-    <hr />
+<h4>Adicione um Paciente.</h4>
+<hr />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Nome">Nome</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value="" />
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <br />
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Nome">Nome</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-            </div>
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Email">Email</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Email" name="Email" type="text" value="" />
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Email">Email</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Email" name="Email" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Cpf">Cpf</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Cpf" name="Cpf" type="text" value="" />
+            @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Cpf">Cpf</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Cpf" name="Cpf" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Medicos">Medicos</label>
+        <div class="col-md-10">
+            <div class="styled-select">
+                @Html.DropDownList("IdMedico")
             </div>
+            @Html.ValidationMessageFor(model => model.IdMedico, "", new { @class = "text-danger" })
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Medicos">Medicos</label>
-            <div class="col-md-10">
-                <div class="styled-select">
-                    @Html.DropDownList("IdMedico")
-                </div>
-                @Html.ValidationMessageFor(model => model.IdMedico, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Cep">Cep</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Cep" name="Cep" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Cep">Cep</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Cep" name="Cep" type="text" value="" />
+            @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
 
-            </div>
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Rua">Rua</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Rua" name="Rua" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Rua">Rua</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Rua" name="Rua" type="text" value="" />
+            @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Bairro">Bairro</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Bairro" name="Bairro" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Bairro">Bairro</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Bairro" name="Bairro" type="text" value="" />
+            @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="UF">UF</label>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="UF">UF</label>
 
 
 
-            <div class="col-md-10">
-                <div class="styled-select">
-                    <select name="UF">
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                    </select>
-                    @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
-                </div>
+        <div class="col-md-6">
+            <div class="styled-select">
+               <input class="form-control col-md-6" name="UF" id="UF" value="" />
+                @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
             </div>
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Cidade">Cidade</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Cidade" name="Cidade" type="text" value="" />
-                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Cidade">Cidade</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Cidade" name="Cidade" type="text" value="" disabled />
+            @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
         </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
 
-                <input type="submit" value="Adicionar Paciente" class="btn btn-success pull-right" />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <a class="btn pull-right" href="/Paciente">voltar para lista</a>
-            </div>
+            <input type="submit" value="Adicionar Paciente" class="btn btn-success pull-right" />
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <a class="btn pull-right" href="/Paciente">voltar para lista</a>
         </div>
+    </div>
 
-    }
+}
+
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+
+</script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#Cep").change(function () {
+            var cep_code = $(this).val();
+            if (cep_code.length <= 0) return;
+            $.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
+                function (result) {
+                    if (result.status != 1) {
+                        alert(result.message || "Houve um erro desconhecido");
+                        return;
+                    }
+                    $("input#Cep").val(result.code);
+                    $("input#UF").val(result.state);
+                    $("input#Cidade").val(result.city);
+                    $("input#Bairro").val(result.district);
+                    $("input#Rua").val(result.address);
+                    
+                });
+        });
+    });
+    </script>
